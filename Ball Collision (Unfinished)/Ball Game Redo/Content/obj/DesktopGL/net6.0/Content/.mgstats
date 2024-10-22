@@ -1,0 +1,4 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/Jadyn Sayavong/source/repos/GDAPS2/ps-dsa-Jas2280/Demos/Ball Game Redo/Content/Arial26.spritefont","C:/Users/Jadyn Sayavong/source/repos/GDAPS2/ps-dsa-Jas2280/Demos/Ball Game Redo/Content/bin/DesktopGL/Content/Arial26.xnb","FontDescriptionProcessor","SpriteFontContent",2068,70687,0.3311538
+"C:/Users/Jadyn Sayavong/source/repos/GDAPS2/ps-dsa-Jas2280/Demos/Ball Game Redo/Content/ball.png","C:/Users/Jadyn Sayavong/source/repos/GDAPS2/ps-dsa-Jas2280/Demos/Ball Game Redo/Content/bin/DesktopGL/Content/ball.xnb","TextureProcessor","Texture2DContent",11233,202585,0.0460707
+"C:/Users/Jadyn Sayavong/source/repos/GDAPS2/ps-dsa-Jas2280/Demos/Ball Game Redo/Content/brick.png","C:/Users/Jadyn Sayavong/source/repos/GDAPS2/ps-dsa-Jas2280/Demos/Ball Game Redo/Content/bin/DesktopGL/Content/brick.xnb","TextureProcessor","Texture2DContent",1255,20085,0.0033937

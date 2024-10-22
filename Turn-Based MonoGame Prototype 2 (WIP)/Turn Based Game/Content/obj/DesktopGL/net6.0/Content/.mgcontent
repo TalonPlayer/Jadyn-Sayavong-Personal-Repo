@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/Jadyn Sayavong/source/repos/GDAPS2/ps-dsa-Jas2280/Demos/Turn Based Game/Content/Arial26.spritefont</File>
+    <File>C:/Users/Jadyn Sayavong/source/repos/GDAPS2/ps-dsa-Jas2280/Demos/Turn Based Game/Content/Arial50.spritefont</File>
+    <File>C:/Users/Jadyn Sayavong/source/repos/GDAPS2/ps-dsa-Jas2280/Demos/Turn Based Game/Content/Mrs. Reidy.png</File>
+    <File>C:/Users/Jadyn Sayavong/source/repos/GDAPS2/ps-dsa-Jas2280/Demos/Turn Based Game/Content/pixel.png</File>
+    <File>C:/Users/Jadyn Sayavong/source/repos/GDAPS2/ps-dsa-Jas2280/Demos/Turn Based Game/Content/Platform.png</File>
+    <File>C:/Users/Jadyn Sayavong/source/repos/GDAPS2/ps-dsa-Jas2280/Demos/Turn Based Game/Content/transparent gray.png</File>
+    <File>C:/Users/Jadyn Sayavong/source/repos/GDAPS2/ps-dsa-Jas2280/Demos/Turn Based Game/Content/units/Denji.png</File>
+    <File>C:/Users/Jadyn Sayavong/source/repos/GDAPS2/ps-dsa-Jas2280/Demos/Turn Based Game/Content/units/Gojo Satoru.png</File>
+    <File>C:/Users/Jadyn Sayavong/source/repos/GDAPS2/ps-dsa-Jas2280/Demos/Turn Based Game/Content/units/Grimir Oversplitter.png</File>
+    <File>C:/Users/Jadyn Sayavong/source/repos/GDAPS2/ps-dsa-Jas2280/Demos/Turn Based Game/Content/units/Josuke Higashikata.png</File>
+    <File>C:/Users/Jadyn Sayavong/source/repos/GDAPS2/ps-dsa-Jas2280/Demos/Turn Based Game/Content/units/Osamu Dazai.png</File>
+    <File>C:/Users/Jadyn Sayavong/source/repos/GDAPS2/ps-dsa-Jas2280/Demos/Turn Based Game/Content/units/Slapstick.png</File>
+    <File>C:/Users/Jadyn Sayavong/source/repos/GDAPS2/ps-dsa-Jas2280/Demos/Turn Based Game/Content/units/Soft And Wet.png</File>
+    <File>C:/Users/Jadyn Sayavong/source/repos/GDAPS2/ps-dsa-Jas2280/Demos/Turn Based Game/Content/units/Tohru Adachi.png</File>
+    <File>C:/Users/Jadyn Sayavong/source/repos/GDAPS2/ps-dsa-Jas2280/Demos/Turn Based Game/Content/units/Yu Narukami.png</File>
+    <File>C:/Users/Jadyn Sayavong/source/repos/GDAPS2/ps-dsa-Jas2280/Demos/Turn Based Game/Content/units/Yuta Okkotsu.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

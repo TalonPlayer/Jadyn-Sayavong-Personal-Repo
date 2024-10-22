@@ -1,0 +1,57 @@
+1,Level,Stats
+1000,Current Health,Stats
+1000,Max Health,Stats
+1000,Shield,Stats
+1000,Max Shield,Stats
+100,Regeneration,Stats
+150,Physical Damage,Stats
+25,Lethality,Stats
+500,Magic Damage,Stats
+50,Spell Penetration,Stats
+10,Armor,Stats
+10,Magic Resist,Stats
+30,Luck,Stats
+25,Critical Chance,Stats
+20,Evade Chance,Stats
+15,Miss Chance,Stats
+100,Stamina,Stats
+200,Mana,Stats
+200,Max Mana,Stats
+15,Rest,Stats
+25,Think,Stats
+0,Level Meter,Stats
+0,Ultimate meter,Stats
+5,Level Rate,Stats
+5,Ultimate Rate,Stats
+0,Charge,Stats
+0,Concentrate,Stats
+0,Physical Barrier,Stats
+0,Magic Barrier,Stats
+0,Bleeding,Stats
+0,Blinded,Stats
+0,Stunned,Stats
+0,Weakened,Stats
+0,Lava,Magic Elements
+0,Fire,Magic Elements
+0,Water,Magic Elements
+0,Ice,Magic Elements
+0,Earth,Magic Elements
+0,Wind,Magic Elements
+0,Lightning,Magic Elements
+0,Light,Magic Elements
+0,Dark,Magic Elements
+0,Mind,Magic Elements
+0,Void,Magic Elements
+0,Imaginary,Magic Elements
+0,Lava,Magic Resistances
+0,Fire,Magic Resistances
+0,Water,Magic Resistances
+0,Ice,Magic Resistances
+0,Earth,Magic Resistances
+0,Wind,Magic Resistances
+0,Lightning,Magic Resistances
+0,Light,Magic Resistances
+0,Dark,Magic Resistances
+0,Mind,Magic Resistances
+0,Void,Magic Resistances
+0,Imaginary,Magic Resistances
