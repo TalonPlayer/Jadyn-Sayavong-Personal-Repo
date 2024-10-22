@@ -12,3 +12,17 @@ C:\Users\Jadyn Sayavong\source\repos\GDAPS2\ps-dsa-Jas2280\Demos\Stat Code\obj\D
 C:\Users\Jadyn Sayavong\source\repos\GDAPS2\ps-dsa-Jas2280\Demos\Stat Code\obj\Debug\net6.0\Stat Code.pdb
 C:\Users\Jadyn Sayavong\source\repos\GDAPS2\ps-dsa-Jas2280\Demos\Stat Code\obj\Debug\net6.0\Stat Code.genruntimeconfig.cache
 C:\Users\Jadyn Sayavong\source\repos\GDAPS2\ps-dsa-Jas2280\Demos\Stat Code\obj\Debug\net6.0\ref\Stat Code.dll
+C:\Users\Jadyn Sayavong\OneDrive\Desktop\Jadyn Sayavong Personal Repo\Jadyn-Sayavong-Personal-Repo\Turn-Based Console (WIP)\Stat Code\bin\Debug\net6.0\Stat Code.exe
+C:\Users\Jadyn Sayavong\OneDrive\Desktop\Jadyn Sayavong Personal Repo\Jadyn-Sayavong-Personal-Repo\Turn-Based Console (WIP)\Stat Code\bin\Debug\net6.0\Stat Code.deps.json
+C:\Users\Jadyn Sayavong\OneDrive\Desktop\Jadyn Sayavong Personal Repo\Jadyn-Sayavong-Personal-Repo\Turn-Based Console (WIP)\Stat Code\bin\Debug\net6.0\Stat Code.runtimeconfig.json
+C:\Users\Jadyn Sayavong\OneDrive\Desktop\Jadyn Sayavong Personal Repo\Jadyn-Sayavong-Personal-Repo\Turn-Based Console (WIP)\Stat Code\bin\Debug\net6.0\Stat Code.dll
+C:\Users\Jadyn Sayavong\OneDrive\Desktop\Jadyn Sayavong Personal Repo\Jadyn-Sayavong-Personal-Repo\Turn-Based Console (WIP)\Stat Code\bin\Debug\net6.0\Stat Code.pdb
+C:\Users\Jadyn Sayavong\OneDrive\Desktop\Jadyn Sayavong Personal Repo\Jadyn-Sayavong-Personal-Repo\Turn-Based Console (WIP)\Stat Code\obj\Debug\net6.0\Stat Code.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jadyn Sayavong\OneDrive\Desktop\Jadyn Sayavong Personal Repo\Jadyn-Sayavong-Personal-Repo\Turn-Based Console (WIP)\Stat Code\obj\Debug\net6.0\Stat Code.AssemblyInfoInputs.cache
+C:\Users\Jadyn Sayavong\OneDrive\Desktop\Jadyn Sayavong Personal Repo\Jadyn-Sayavong-Personal-Repo\Turn-Based Console (WIP)\Stat Code\obj\Debug\net6.0\Stat Code.AssemblyInfo.cs
+C:\Users\Jadyn Sayavong\OneDrive\Desktop\Jadyn Sayavong Personal Repo\Jadyn-Sayavong-Personal-Repo\Turn-Based Console (WIP)\Stat Code\obj\Debug\net6.0\Stat Code.csproj.CoreCompileInputs.cache
+C:\Users\Jadyn Sayavong\OneDrive\Desktop\Jadyn Sayavong Personal Repo\Jadyn-Sayavong-Personal-Repo\Turn-Based Console (WIP)\Stat Code\obj\Debug\net6.0\Stat Code.dll
+C:\Users\Jadyn Sayavong\OneDrive\Desktop\Jadyn Sayavong Personal Repo\Jadyn-Sayavong-Personal-Repo\Turn-Based Console (WIP)\Stat Code\obj\Debug\net6.0\refint\Stat Code.dll
+C:\Users\Jadyn Sayavong\OneDrive\Desktop\Jadyn Sayavong Personal Repo\Jadyn-Sayavong-Personal-Repo\Turn-Based Console (WIP)\Stat Code\obj\Debug\net6.0\Stat Code.pdb
+C:\Users\Jadyn Sayavong\OneDrive\Desktop\Jadyn Sayavong Personal Repo\Jadyn-Sayavong-Personal-Repo\Turn-Based Console (WIP)\Stat Code\obj\Debug\net6.0\Stat Code.genruntimeconfig.cache
+C:\Users\Jadyn Sayavong\OneDrive\Desktop\Jadyn Sayavong Personal Repo\Jadyn-Sayavong-Personal-Repo\Turn-Based Console (WIP)\Stat Code\obj\Debug\net6.0\ref\Stat Code.dll

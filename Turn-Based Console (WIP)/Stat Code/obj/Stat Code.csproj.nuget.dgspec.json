@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jadyn Sayavong\\source\\repos\\GDAPS2\\ps-dsa-Jas2280\\Demos\\Stat Code\\Stat Code.csproj": {}
+    "C:\\Users\\Jadyn Sayavong\\OneDrive\\Desktop\\Jadyn Sayavong Personal Repo\\Jadyn-Sayavong-Personal-Repo\\Turn-Based Console (WIP)\\Stat Code\\Stat Code.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jadyn Sayavong\\source\\repos\\GDAPS2\\ps-dsa-Jas2280\\Demos\\Stat Code\\Stat Code.csproj": {
+    "C:\\Users\\Jadyn Sayavong\\OneDrive\\Desktop\\Jadyn Sayavong Personal Repo\\Jadyn-Sayavong-Personal-Repo\\Turn-Based Console (WIP)\\Stat Code\\Stat Code.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jadyn Sayavong\\source\\repos\\GDAPS2\\ps-dsa-Jas2280\\Demos\\Stat Code\\Stat Code.csproj",
+        "projectUniqueName": "C:\\Users\\Jadyn Sayavong\\OneDrive\\Desktop\\Jadyn Sayavong Personal Repo\\Jadyn-Sayavong-Personal-Repo\\Turn-Based Console (WIP)\\Stat Code\\Stat Code.csproj",
         "projectName": "Stat Code",
-        "projectPath": "C:\\Users\\Jadyn Sayavong\\source\\repos\\GDAPS2\\ps-dsa-Jas2280\\Demos\\Stat Code\\Stat Code.csproj",
+        "projectPath": "C:\\Users\\Jadyn Sayavong\\OneDrive\\Desktop\\Jadyn Sayavong Personal Repo\\Jadyn-Sayavong-Personal-Repo\\Turn-Based Console (WIP)\\Stat Code\\Stat Code.csproj",
         "packagesPath": "C:\\Users\\Jadyn Sayavong\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jadyn Sayavong\\source\\repos\\GDAPS2\\ps-dsa-Jas2280\\Demos\\Stat Code\\obj\\",
+        "outputPath": "C:\\Users\\Jadyn Sayavong\\OneDrive\\Desktop\\Jadyn Sayavong Personal Repo\\Jadyn-Sayavong-Personal-Repo\\Turn-Based Console (WIP)\\Stat Code\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Jadyn Sayavong\\AppData\\Roaming\\NuGet\\NuGet.Config",

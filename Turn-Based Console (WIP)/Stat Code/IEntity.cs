@@ -10,8 +10,6 @@ namespace Stat_Code
     {
         public bool IsAlive { get; }
 
-        public Dictionary<string, double> Stats { get; }
-
         public List<string> Abilities { get; }
         public string Name { get; }
 
@@ -20,7 +18,7 @@ namespace Stat_Code
         public void TakeDamage(double damage);
 
         public void Heal(Character target, double healing);
-
+        
         public string SelectMember(List<Character> party);
     }
 }
