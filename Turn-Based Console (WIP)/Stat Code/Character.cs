@@ -17,8 +17,8 @@ namespace Stat_Code
         // Private fields, child classes can't change these.
         private string name;
         private bool isAlive;
-        private int aIndex;
         private bool didAction;
+        private TurnHandler turnHandler;
 
         // Protected fields, child classes are allowed to change these, but main can't
         protected Random rng;
@@ -51,18 +51,21 @@ namespace Stat_Code
             rng = new Random();
             isAlive = true;
             disabled = false;
-            action = "Attack";
             didAction = false;
 
             DefaultStats = new Dictionary<string, double>();
             DefaultElements = new Dictionary<string, double>();
             DefaultResistances = new Dictionary<string, double>();
+
+            turnHandler = new TurnHandler(this);
+            TurnHandler.Action = "Attack";
+
         }
 
         // Properties so that main can access, but can't change it
         public bool DidAction { get { return didAction; } }
         public bool Disabled {  get { return disabled; } } 
-        public string Action { get { return action; } }
+        public string Action { get { return TurnHandler.Action; } }
         public string Name { get { return name; } }
         public bool IsAlive { get { return isAlive; } }
         public List<string> Abilities { get { return abilities; } }
@@ -71,6 +74,7 @@ namespace Stat_Code
         public Dictionary<string, double> DefaultStats { get;}
         public Dictionary<string, double> DefaultElements { get; }
         public Dictionary<string, double> DefaultResistances { get; }
+        public TurnHandler TurnHandler { get { return turnHandler; } }
 
         /// <summary>
         /// This Character will attack the target for the amount of damage.
@@ -144,8 +148,8 @@ namespace Stat_Code
         /// </summary>
         public virtual void TurnStats()
         {
-            didAction = false;
-            action = "Attack";
+            turnHandler.DidAction = false;
+            turnHandler.Action = "Attack";
 
             // Healt this character for a percent amount
             Heal(this, stats["Current Health"] * (stats["Regeneration"] / 100));
@@ -205,87 +209,6 @@ namespace Stat_Code
         /// <param name="party"></param>
         /// <param name="enemy"></param>
         public abstract void DoAction(int index, List<Character> party, Character enemy);
-
-        /// <summary>
-        /// Select the action of a character.
-        /// </summary>
-        /// <param name="party"></param>
-        /// <param name="enemy"></param>
-        public void SelectAction(List<Character> party, Character enemy)
-        {
-            Console.WriteLine(
-                            $"\nWhat will {Name} do?" +
-                            $"\n\t1. Attack" +
-                            $"\n\t2. Ability" +
-                            $"\n\t3. Stats" +
-                            $"\n\t4. Do Action");
-            int choice = int.Parse(Console.ReadLine());
-
-            switch (choice)
-            {
-                case 1:
-                    // Attack will simply set the action to attack
-                    // The action index is set to 0, because basic attack is 0
-                    action = "Attack";
-                    aIndex = 0;
-                    break;
-                case 2:
-                    // Starts at 1 to show that the first ability is #1 and so on
-                    int iteration = 1;
-                    foreach (string ability in Abilities)
-                    {
-                        Console.WriteLine($"{iteration}. {ability}");
-                        iteration++;
-                    }
-                    // Get the index of the ability
-                    aIndex = int.Parse(Console.ReadLine());
-
-                    // The action string is chosen from the abilities list.
-                    action = abilities[aIndex - 1];
-
-                    break;
-                case 3:
-                    // Show the current stats of the character
-                    Console.WriteLine(ToString());
-                    break;
-                case 4:
-                    // Do the action.
-                    DoAction(aIndex, party, enemy);
-                    // The character did the action, so they can't be chosen again
-                    action = "Turn is Over";
-                    didAction = true;
-                    break;
-            }
-        }
-
-        /// <summary>
-        /// Select a party member. Does not include this Character.
-        /// </summary>
-        /// <param name="party"></param>
-        /// <returns>string (Character's Name).</returns>
-        public string SelectMember(List<Character> party)
-        {
-            // Add every character from the party besides this character to a new list.
-            int index = 0;
-            List<Character> list = new List<Character>();
-            foreach (Character member in party)
-            {
-                if (member != this)
-                {
-                    list.Add(member);
-                }
-            }
-
-            // Print every character in the new list that exludes this Character
-            for (int i = 0; i < list.Count; i++)
-            {
-                Console.WriteLine($"{index + 1}. {list[i].Name}");
-            }
-            index = int.Parse(Console.ReadLine()) - 1;
-
-            // That character is selected
-            return list[index].Name;
-        }
 
         /// <summary>
         /// Print the current stats of a character.

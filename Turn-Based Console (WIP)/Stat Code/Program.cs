@@ -62,7 +62,7 @@ namespace Stat_Code
                         // But to get the correct index when that input is selected, it will start at 0
                         for (int i = 0; i < party.Count; i++)
                         {
-                            Console.Write($"\n{i + 1}. {party[i].Name} - ({party[i].Action})");
+                            Console.Write($"\n{i + 1}. {party[i].Name} - ({party[i].TurnHandler.Action})");
                             index = i;
                             maxIndex = index + 2;
                         }
@@ -79,9 +79,9 @@ namespace Stat_Code
                         }
 
                         // If the party member didn't do their action, not stunned, and alive, they can select their action
-                        if (!party[index].DidAction && !party[index].Disabled && party[index].IsAlive)
+                        if (!party[index].TurnHandler.DidAction && !party[index].Disabled && party[index].IsAlive)
                         {
-                            party[index].SelectAction(party, enemy);
+                            party[index].TurnHandler.SelectAction(party, enemy);
                         }
                         // Otherwise, they can't be selected
                         else

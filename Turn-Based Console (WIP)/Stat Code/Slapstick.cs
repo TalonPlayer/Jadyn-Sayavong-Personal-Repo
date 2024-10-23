@@ -84,7 +84,7 @@ namespace Stat_Code
                     break;
                 case 5:
                     Console.WriteLine(abilities[4]);
-                    Console.WriteLine(SelectMember(party) + " was chosen"!);
+                    Console.WriteLine(TurnHandler.SelectMember(party) + " was chosen"!);
                     break;
                 case 6:
                     stats["Stunned"] = 3;
