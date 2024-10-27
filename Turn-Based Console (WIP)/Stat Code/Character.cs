@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Reflection;
 using System.Reflection.PortableExecutable;
 using System.Runtime.CompilerServices;
 using System.Security;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
@@ -31,7 +33,7 @@ namespace Stat_Code
         protected Dictionary<string, double> resistances = new Dictionary<string, double>();
 
         // Character abilities
-        protected List<string> abilities;
+        protected Dictionary<string, int> abilities = new Dictionary<string, int>();
 
         // The character this character is targeting
         protected Character target;
@@ -41,6 +43,9 @@ namespace Stat_Code
 
         // Stunned
         protected bool disabled;
+
+        // Granted abilities from other characters
+        private Dictionary<Action, int> grantedAbilities = new Dictionary<Action, int>();
 
         // The only thing the character needs is the name, so that the character can be
         // polymorphed into their appropriate Child Class
@@ -63,12 +68,12 @@ namespace Stat_Code
         }
 
         // Properties so that main can access, but can't change it
-        public bool DidAction { get { return didAction; } }
+        public bool DidAction { get { return TurnHandler.DidAction; } }
         public bool Disabled {  get { return disabled; } } 
         public string Action { get { return TurnHandler.Action; } }
         public string Name { get { return name; } }
         public bool IsAlive { get { return isAlive; } }
-        public List<string> Abilities { get { return abilities; } }
+        public Dictionary<string, int> Abilities { get { return abilities; } }
 
         // The Default so that they can return to normal after boosts and reductions end
         public Dictionary<string, double> DefaultStats { get;}
@@ -81,10 +86,33 @@ namespace Stat_Code
         /// </summary>
         /// <param name="target"></param>
         /// <param name="damage"></param>
-        public void Attack(Character target, double damage)
+        public void PhysicalAttack(Character target, double damage)
         {
             Console.WriteLine($"\n{Name} did {damage} damage to {target.Name}!");
+            double reduce = target.stats["Armor"] * (stats["Lethality"] / 100);
+            reduce = (target.stats["Armor"] - reduce) / 100;
+            reduce = 1 - reduce;
+            damage = damage * reduce;
             target.TakeDamage(damage);
+            damage *= stats["Ultimate Rate"] / 100;
+            stats["Ultimate Meter"] += damage;
+            Console.WriteLine(stats["Ultimate Meter"]);
+        }
+
+        public void MagicAttack(Character target, string element, double damage)
+        {
+            Console.WriteLine($"\n{Name} did {damage} ({elements[element]} boost) {element} damage.");
+            Console.WriteLine($"\n{target.Name} has {target.stats["Magic Resist"]} ({target.resistances[element]} boost) {element} resistance.");
+
+            double reduce = target.stats["Magic Resist"] * (stats["Spell Penetration"] / 100);
+            reduce = (target.stats["Magic Resist"] - reduce) / 100;
+            reduce = 1 - reduce;
+            damage = damage + (damage * (resistances[element] - elements[element] / 100));
+            damage = damage * reduce;
+            target.TakeDamage(damage);
+            damage *= stats["Ultimate Rate"] / 100;
+            stats["Ultimate Meter"] += damage;
+            Console.WriteLine(stats["Ultimate Meter"]);
         }
         /// <summary>
         /// This Character's health is updated after being attacked.
@@ -107,42 +135,40 @@ namespace Stat_Code
         /// <param name="healing"></param>
         public void Heal(Character target, double healing)
         {
+            Console.WriteLine($"{target.stats["Current Health"]}");
             target.stats["Current Health"] += healing;
+            Console.WriteLine($"{target.Name} was healed for {healing} health! ({target.stats["Current Health"]})");
         }
 
-        public void ChangeValue(int value, string name, string category)
+        public bool CheckEnergy(string energy, int value)
+        {
+            if (stats[energy] < value)
+            {
+                Console.WriteLine($"{Name} does not have enough {energy} for this!");
+                TurnHandler.DidAction = false;
+                TurnHandler.Action = "Attack";
+                TurnHandler.AbilityIndex = 0;
+                return false;
+            }
+            stats[energy] -= value;
+            return true;
+        }
+        public void ChangeValue(double value, string name, string category)
         {
             switch (category) 
             {
                 case "Stats":
-                    stats[name] += value;
+                    stats[name] = value;
                     break;
                 case "Magic Elements":
-                    elements[name] += value;
+                    elements[name] = value;
                     break;
                 case "Magic Resistances":
-                    resistances[name] += value;
+                    resistances[name] = value;
                     break;
             }
 
         }
-
-        public void ResetValue(string name, string category)
-        {
-            switch (category) 
-            {
-            case "Stats":
-                stats[name] = DefaultStats[name];
-                break;
-            case "Magic Elements":
-                elements[name] = DefaultElements[name];
-                break;
-            case "Magic Resistances":
-                resistances[name] = DefaultResistances[name];
-                break;
-            }
-        }
-
         /// <summary>
         /// This Character will Regenerate health, regain Stamina and Mana, and any status counters will be subtracted.
         /// </summary>
@@ -150,7 +176,10 @@ namespace Stat_Code
         {
             turnHandler.DidAction = false;
             turnHandler.Action = "Attack";
+            turnHandler.AbilityIndex = 0;
 
+            stats["Ultimate Meter"] = Math.Min(100, stats["Ultimate Meter"]);
+            AbilityCounter();
             // Healt this character for a percent amount
             Heal(this, stats["Current Health"] * (stats["Regeneration"] / 100));
             stats["Stamina"] += stats["Rest"];
@@ -161,20 +190,20 @@ namespace Stat_Code
             // Ex. If Bleeding starts at 3 turns, bleeding will now be 2 on the next turn, then 1, then 0
             if (stats["Bleeding"] > 0)
             {
+                stats["Bleeding"]--;
                 // Damage the player for 25% of their current health
                 stats["Current Health"] -= stats["Current Health"] * .25;
-                stats["Bleeding"]--;
             }
             if (stats["Blinded"] > 0)
             {
                 // The character is blinded, so they have a 90% Chance of missing
                 stats["Miss Chance"] = 90;
                 stats["Blinded"]--;
-            }
-            else
-            {
-                // Miss Chance is set back to normal
-                stats["Miss Chance"] = DefaultStats["Miss Chance"];
+                if (stats["Blinded"] == 0)
+                {
+                    // Miss Chance is set back to normal
+                    stats["Miss Chance"] = DefaultStats["Miss Chance"];
+                }
             }
             if (stats["Stunned"] > 0)
             {
@@ -182,22 +211,50 @@ namespace Stat_Code
                 action = "Stunned";
                 disabled = true;
                 stats["Stunned"]--;
-            }
-            else
-            {
-                // Character is not disabled
-                disabled = false;
+                if (stats["Stunned"] == 0)
+                {
+                    disabled = false;
+                }
             }
             if (stats["Weakened"] > 0)
             {
                 // The character's physical damage is reduced by 20%
                 stats["Physical Damage"] *= .20;
                 stats["Weakened"]--;
+                if (stats["Weakened"] == 0)
+                {
+                    stats["Physical Damage"] = DefaultStats["Physical Damage"];
+                }
             }
-            else
+        }
+
+        public void UseGrantedAbilities()
+        {
+            foreach (var ability in grantedAbilities)
             {
-                // Character's physical damage is set back to normal
-                stats["Physical Damage"] = DefaultStats["Physical Damage"];
+                ability.Key.Invoke();
+            }
+        }
+
+        public void GiveAbility(Action ability, int turns)
+        {
+            grantedAbilities.Add(ability, turns);
+        }
+
+        public void AbilityCounter()
+        {
+            if (grantedAbilities != null)
+            {
+                foreach (var abilities in grantedAbilities)
+                {
+                    grantedAbilities[abilities.Key]--;
+                    if (grantedAbilities[abilities.Key] == 0)
+                    {
+                        grantedAbilities.Remove(abilities.Key);
+
+                        Console.WriteLine($"{abilities.Key} was removed!");
+                    }
+                }
             }
         }
 

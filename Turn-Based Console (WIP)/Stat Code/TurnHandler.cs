@@ -31,7 +31,7 @@ namespace Stat_Code
                             $"\nWhat will {member.Name} do?" +
                             $"\n\t1. Attack" +
                             $"\n\t2. Ability" +
-                            $"\n\t3. member.stats" +
+                            $"\n\t3. Stats" +
                             $"\n\t4. Do Action");
          
             return int.Parse(Console.ReadLine());
@@ -44,40 +44,58 @@ namespace Stat_Code
         /// <param name="enemy"></param>
         public void SelectAction(List<Character> party, Character enemy)
         {
-            switch (PrintActions())
+            if (!member.DidAction && !member.Disabled && member.IsAlive)
             {
-                case 1:
-                    // Attack will simply set the action to attack
-                    // The action index is set to 0, because basic attack is 0
-                    Action = "Attack";
-                    AbilityIndex = 0;
-                    break;
-                case 2:
-                    // Starts at 1 to show that the first ability is #1 and so on
-                    int iteration = 1;
-                    foreach (string ability in member.Abilities)
-                    {
-                        Console.WriteLine($"{iteration}. {ability}");
-                        iteration++;
-                    }
-                    // Get the index of the ability
-                    AbilityIndex = int.Parse(Console.ReadLine());
+                switch (PrintActions())
+                {
+                    case 1:
+                        // Attack will simply set the action to attack
+                        // The action index is set to 0, because basic attack is 0
+                        Action = "Attack";
+                        AbilityIndex = 0;
+                        break;
+                    case 2:
+                        // Starts at 1 to show that the first ability is #1 and so on
+                        int iteration = 1;
+                        foreach (var ability in member.Abilities)
+                        {
+                            Console.WriteLine($"{iteration}. {ability.Value} - {ability.Key}");
+                            iteration++;
+                        }
+                        // Get the index of the ability
+                        AbilityIndex = int.Parse(Console.ReadLine());
+                        // The action string is chosen from the abilities list.
+                        try
+                        {
+                            Action = member.Abilities.ElementAt(AbilityIndex - 1).Key;
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Ability can't be selected!");
+                            Action = "Attack";
+                            AbilityIndex = 0;
+                        }
 
-                    // The action string is chosen from the abilities list.
-                    Action = member.Abilities[AbilityIndex - 1];
+                        break;
+                    case 3:
+                        // Show the current member.stats of the character
+                        Console.WriteLine(member.ToString());
+                        break;
+                    case 4:
+                        // The character did the action, so they can't be chosen again
+                        // Unless in specific circumstances
+                        Action = "Turn is Over";
+                        DidAction = true;
 
-                    break;
-                case 3:
-                    // Show the current member.stats of the character
-                    Console.WriteLine(ToString());
-                    break;
-                case 4:
-                    // Do the action.
-                    member.DoAction(AbilityIndex, party, enemy);
-                    // The character did the action, so they can't be chosen again
-                    Action = "Turn is Over";
-                    DidAction = true;
-                    break;
+                        // Do the action.
+                        member.DoAction(AbilityIndex, party, enemy);
+
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine(member.Name + " can't be selected.");
             }
         }
         /// <summary>
@@ -85,7 +103,7 @@ namespace Stat_Code
         /// </summary>
         /// <param name="party"></param>
         /// <returns>string (Character's Name).</returns>
-        public string SelectMember(List<Character> party)
+        public Character SelectMember(List<Character> party)
         {
             // Add every character from the party besides this character to a new list.
             int index = 0;
@@ -94,7 +112,7 @@ namespace Stat_Code
             {
                 if (m != member)
                 {
-                    list.Add(member);
+                    list.Add(m);
                 }
             }
 
@@ -106,7 +124,7 @@ namespace Stat_Code
             index = int.Parse(Console.ReadLine()) - 1;
 
             // That character is selected
-            return list[index].Name;
+            return list[index];
         }
     }
 }

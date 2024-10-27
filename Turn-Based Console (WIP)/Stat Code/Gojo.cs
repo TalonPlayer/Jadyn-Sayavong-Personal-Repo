@@ -14,13 +14,13 @@ namespace Stat_Code
         {
             LoadCharacter(name);
 
-            abilities = new List<string>
+            abilities = new Dictionary<string, int>
             {
-                { "Unlimited Void" },
-                { "Hollow Purple" },
-                { "Hollow Red"},
-                { "Hollow Blue" },
-                { "Maximum Output Blue" },
+                { "Unlimited Void" , 0},
+                { "Hollow Purple", 0 },
+                { "Hollow Red", 0 },
+                { "Hollow Blue", 0 },
+                { "Maximum Output Blue", 0 },
             };
         }
         public override void DoAction(int index, List<Character> party, Character enemy)
@@ -29,24 +29,26 @@ namespace Stat_Code
             switch (index)
             {
                 case 0:
-                    Attack(target, stats["Physical Damage"]);
+                    PhysicalAttack(target, stats["Physical Damage"]);
                     break;
                 case 1:
-                    Console.WriteLine(abilities[0]);
+                    Console.WriteLine(abilities.ElementAt(0).Key);
                     break;
                 case 2:
-                    Console.WriteLine(abilities[1]);
+                    Console.WriteLine(abilities.ElementAt(1).Key);
                     break;
                 case 3:
-                    Console.WriteLine(abilities[2]);
+                    Console.WriteLine(abilities.ElementAt(2).Key);
                     break;
                 case 4:
-                    Console.WriteLine(abilities[3]);
+                    Console.WriteLine(abilities.ElementAt(3).Key);
                     break;
                 case 5:
-                    Console.WriteLine(abilities[4]);
+                    Console.WriteLine(abilities.ElementAt(4).Key);
                     break;
             }
+
+            UseGrantedAbilities();
         }
     }
 }

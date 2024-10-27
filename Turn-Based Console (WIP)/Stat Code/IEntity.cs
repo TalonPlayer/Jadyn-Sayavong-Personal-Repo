@@ -9,10 +9,10 @@ namespace Stat_Code
     interface IEntity
     {
         public bool IsAlive { get; }
-        public List<string> Abilities { get; }
+        public Dictionary<string, int> Abilities { get; }
         public string Name { get; }
 
-        public void Attack(Character target, double damage);
+        public void PhysicalAttack(Character target, double damage);
 
         public void TakeDamage(double damage);
 

@@ -1,4 +1,3 @@
-1,Level,Stats
 1000,Current Health,Stats
 1000,Max Health,Stats
 1000,Shield,Stats
@@ -16,12 +15,9 @@
 15,Miss Chance,Stats
 100,Stamina,Stats
 200,Mana,Stats
-200,Max Mana,Stats
 15,Rest,Stats
 25,Think,Stats
-0,Level Meter,Stats
-0,Ultimate meter,Stats
-5,Level Rate,Stats
+0,Ultimate Meter,Stats
 5,Ultimate Rate,Stats
 0,Charge,Stats
 0,Concentrate,Stats
